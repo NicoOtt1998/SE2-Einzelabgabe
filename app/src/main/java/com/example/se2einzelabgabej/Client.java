@@ -15,7 +15,6 @@ import java.net.Socket;
 public class Client {
 
     private Socket socket;
-    private BufferedReader reader;
     private DataOutputStream streamToServer;
     private BufferedReader serverAnsware;
 
@@ -24,7 +23,6 @@ public class Client {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public Client(){
         try{
-            reader=new BufferedReader(new InputStreamReader(System.in));
             socket= new Socket("se2-isys.aau.at",53212);
             streamToServer= new DataOutputStream(socket.getOutputStream());
             serverAnsware = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -35,8 +33,11 @@ public class Client {
 
     }
 
-    private void makerequest(){
-
+    public String makerequest(String mk) throws IOException{
+            streamToServer.writeBytes(mk+'n');
+            String answare= serverAnsware.readLine();
+            socket.close();
+            return answare;
     }
 
 

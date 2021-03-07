@@ -1,13 +1,17 @@
 package com.example.se2einzelabgabej;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,10 +24,19 @@ public class MainActivity extends AppCompatActivity {
         Button btnSendtoServer = findViewById(R.id.button);
 
         btnSendtoServer.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 Client client = new Client();
-
+                EditText inputField=findViewById(R.id.editTextNumber);
+                String mk= inputField.getText().toString();
+                try {
+                   String serverasware= client.makerequest(mk);
+                    TextView messageForClient= findViewById(R.id.textView);
+                    messageForClient.setText(serverasware);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
