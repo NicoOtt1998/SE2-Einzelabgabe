@@ -26,18 +26,28 @@ public class MainActivity extends AppCompatActivity {
                 TextView messageForClient= findViewById(R.id.textView);
                 messageForClient.setText(mk);
             }
-
+            //a,b,c,d,e,f,g,h,i,j
+            //1,2,3,4,5,6,7,8,9,0
             public String addASCII (String mk){
                 String stringNEw="";
                 for(int i=0;  i<mk.length();i++){
                     char c = mk.charAt(i);
                     if(i%2 != 0){
-
+                        int ascii= c;
+                        if(c==48){
+                            ascii+=58;
+                        }
+                        else{
+                            ascii+=48;
+                        }
+                        c= (char) ascii;
                     }
                     stringNEw+=c;
                 }
                 return stringNEw;
             }
         });
+
+
     }
 }
