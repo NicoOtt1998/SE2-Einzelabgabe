@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">SE2EinzelabgabeJ</string>
+    <string name="ClientMessage">ClientMessage</string>
+    <string name="sendToServer">Send</string>
+    <string name="doSomthing">Do Somthing</string>
 </resources>
