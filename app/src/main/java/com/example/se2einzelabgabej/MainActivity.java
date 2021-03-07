@@ -17,6 +17,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btncalc = findViewById(R.id.button2);
+        Button btnSendtoServer = findViewById(R.id.button);
+
+        btnSendtoServer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Client client = new Client();
+
+            }
+        });
+
         btncalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
