@@ -23,13 +23,20 @@ public class MainActivity extends AppCompatActivity {
                 EditText inputField=findViewById(R.id.editTextNumber);
                 String mk= inputField.getText().toString();
                 mk=addASCII(mk);
+                TextView messageForClient= findViewById(R.id.textView);
+                messageForClient.setText(mk);
             }
 
             public String addASCII (String mk){
-                String mkString= String.valueOf(mk);
-                String stringNEw="Nice";
-                return stringNEw;
+                String stringNEw="";
+                for(int i=0;  i<mk.length();i++){
+                    char c = mk.charAt(i);
+                    if(i%2 != 0){
 
+                    }
+                    stringNEw+=c;
+                }
+                return stringNEw;
             }
         });
     }
