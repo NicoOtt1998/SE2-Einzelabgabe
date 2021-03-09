@@ -10,16 +10,18 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnSend= findViewById(R.id.buttonSend);
-    private Button btnCalculate= findViewById(R.id.buttonCalculate);
-    private EditText inputField=findViewById(R.id.editTextNumber);
-    private TextView messageForUser= findViewById(R.id.textView);
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button btnSend= findViewById(R.id.buttonSend);
+        Button btnCalculate= findViewById(R.id.buttonCalculate);
+        EditText inputField=findViewById(R.id.editTextNumber);
+        TextView messageForUser= findViewById(R.id.textView);
 
 
 
