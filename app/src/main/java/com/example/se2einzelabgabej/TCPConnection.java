@@ -21,15 +21,17 @@ public class TCPConnection extends Thread {
 
     @Override
     public void run(){
+
         try {
             socket= new Socket("se2-isys.aau.at", 53212);
             reader= new BufferedReader(new InputStreamReader(socket.getInputStream()));
             streamtoServer = new DataOutputStream(socket.getOutputStream());
-            streamtoServer.writeBytes(message +'\n');
+            streamtoServer.writeBytes(message +"\n");
             serverAnswer= reader.readLine();
-            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        }catch (IOException e){}
     }
 
     public String getServerAnswer(){

@@ -29,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
         btnSendtoServer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String mk= inputField.getText().toString();
                 try {
-                    String mk= inputField.getText().toString();
                     TCPConnection connection= new TCPConnection(mk);
                     connection.start();
+                    connection.join();
                     TextView messageForClient= findViewById(R.id.textView);
                     messageForClient.setText(connection.getServerAnswer());
-                    connection.join();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
