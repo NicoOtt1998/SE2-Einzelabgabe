@@ -22,28 +22,33 @@ public class MainActivity extends AppCompatActivity {
 
         Button btncalc = findViewById(R.id.button2);
         Button btnSendtoServer = findViewById(R.id.button);
+        EditText inputField=findViewById(R.id.editTextNumber);
+
+
 
         btnSendtoServer.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
-                Client client = new Client();
-                EditText inputField=findViewById(R.id.editTextNumber);
-                String mk= inputField.getText().toString();
                 try {
-                   String serverasware= client.makerequest(mk);
+                    String mk= inputField.getText().toString();
+                    TCPConnection connection= new TCPConnection(mk);
+                    connection.start();
                     TextView messageForClient= findViewById(R.id.textView);
-                    messageForClient.setText(serverasware);
-                } catch (IOException e) {
+                    messageForClient.setText(connection.getServerAnswer());
+                    connection.join();
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
             }
         });
+
+
 
         btncalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText inputField=findViewById(R.id.editTextNumber);
+
                 String mk= inputField.getText().toString();
                 mk=addASCII(mk);
                 TextView messageForClient= findViewById(R.id.textView);
