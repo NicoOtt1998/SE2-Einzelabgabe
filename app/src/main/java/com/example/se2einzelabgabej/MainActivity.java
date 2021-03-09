@@ -1,32 +1,31 @@
 package com.example.se2einzelabgabej;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.IOException;
-
 public class MainActivity extends AppCompatActivity {
+
+    private Button btnSend= findViewById(R.id.buttonSend);
+    private Button btnCalculate= findViewById(R.id.buttonCalculate);
+    private EditText inputField=findViewById(R.id.editTextNumber);
+    private TextView messageForUser= findViewById(R.id.textView);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btncalc = findViewById(R.id.button2);
-        Button btnSendtoServer = findViewById(R.id.button);
-        EditText inputField=findViewById(R.id.editTextNumber);
 
 
 
-        btnSendtoServer.setOnClickListener(new View.OnClickListener() {
+
+        btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String mk= inputField.getText().toString();
@@ -34,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
                     TCPConnection connection= new TCPConnection(mk);
                     connection.start();
                     connection.join();
-                    TextView messageForClient= findViewById(R.id.textView);
-                    messageForClient.setText(connection.getServerAnswer());
+                    messageForUser.setText(connection.getServerAnswer());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -45,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        btncalc.setOnClickListener(new View.OnClickListener() {
+        btnCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

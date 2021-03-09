@@ -21,7 +21,6 @@ public class TCPConnection extends Thread {
 
     @Override
     public void run(){
-
         try {
             socket= new Socket("se2-isys.aau.at", 53212);
             reader= new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -31,7 +30,6 @@ public class TCPConnection extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public String getServerAnswer(){
