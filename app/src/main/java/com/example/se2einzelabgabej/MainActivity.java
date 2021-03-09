@@ -3,7 +3,6 @@ package com.example.se2einzelabgabej;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,32 +24,22 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String mk= inputField.getText().toString();
-                try {
-                    TCPConnection connection= new TCPConnection(mk);
-                    connection.start();
-                    connection.join();
-                    messageForUser.setText(connection.getServerAnswer());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
+        btnSend.setOnClickListener(v -> {
+            try {
+                TCPConnection connection= new TCPConnection(inputField.getText().toString());
+                connection.start();
+                connection.join();
+                messageForUser.setText(connection.getServerAnswer());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         });
 
 
 
-        btnCalculate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calculator c= new Calculator();
-                messageForUser.setText(c.makeNewString(inputField.getText().toString()));
-            }
+        btnCalculate.setOnClickListener(v -> {
+            Calculator c= new Calculator();
+            messageForUser.setText(c.makeNewString(inputField.getText().toString()));
         });
 
 
