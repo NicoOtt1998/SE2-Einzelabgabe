@@ -9,14 +9,12 @@ public class Calculator {
         for(int i=0;  i<s.length();i++){
             char c = s.charAt(i);
             if(i%2 != 0){
-                int ascii= c;
                 if(c==48){
-                    ascii+=58;
+                    c+=58;
                 }
                 else{
-                    ascii+=48;
+                    c+=48;
                 }
-                c= (char) ascii;
             }
             stringNEw+=c;
         }
