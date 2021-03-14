@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +18,6 @@ public class MainActivity extends AppCompatActivity {
         Button btnCalculate= findViewById(R.id.buttonCalculate);
         EditText inputField=findViewById(R.id.editTextNumber);
         TextView messageForUser= findViewById(R.id.textView);
-
-
 
         btnSend.setOnClickListener(v -> {
             try {
@@ -34,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         });
-
-
 
         btnCalculate.setOnClickListener(v -> {
             Calculator c= new Calculator();
